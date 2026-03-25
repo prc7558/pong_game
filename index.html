@@ -1,1 +1,48 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Pong Game</title>\n    <style>\n        canvas {\n            border: 1px solid black;\n        }\n    </style>\n</head>\n<body>\n    <h1>Pong Game</h1>\n    <canvas id="gameCanvas" width="800" height="400"></canvas>\n    <div>\n        <p>Score: <span id="score">0</span></p>\n        <p>Controls: <br> Player 1: Up Arrow & Down Arrow<br> Player 2: W & S</p>\n    </div>\n    <script>\n        // Game setup and logic here\n        const canvas = document.getElementById('gameCanvas');\n        const context = canvas.getContext('2d');\n        let score = 0;\n\n        // Initialize game variables and functions\n        function draw() {\n            context.clearRect(0, 0, canvas.width, canvas.height);\n            // Game drawing logic goes here\n            context.fillStyle = 'black';\n            context.fillRect(0, 0, canvas.width, canvas.height);\n            // Update score display\n            document.getElementById('score').innerText = score;\n        }\n\n        setInterval(draw, 1000 / 60); // 60 FPS\n    </script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>🎮 Pong Game</h1>
+    <div id="gameContainer">
+        <div id="scoreboard">
+            <div class="player-score">
+                <div class="player-name">Player 1</div>
+                <div class="score-value" id="player1Score">0</div>
+            </div>
+            <div class="player-score">
+                <div class="player-name">Computer</div>
+                <div class="score-value" id="player2Score">0</div>
+            </div>
+        </div>
+        
+        <div id="gameStatus">Ready to Play!</div>
+        
+        <canvas id="gameCanvas" width="800" height="400"></canvas>
+        
+        <div id="instructions">
+            <h3>📖 How to Play:</h3>
+            <div class="control-group">
+                <p><strong>Controls (Player 1 - Left Paddle):</strong></p>
+                <p>🖱️ Mouse Control: Move your mouse up and down</p>
+                <p>⌨️ Keyboard: UP Arrow & DOWN Arrow keys</p>
+            </div>
+            <div class="control-group">
+                <p><strong>Game Rules:</strong></p>
+                <p>• First to 11 points wins!</p>
+                <p>• Computer controls the right paddle</p>
+                <p>• Ball bounces off walls and paddles</p>
+                <p>• Press 'R' or click button below to reset</p>
+            </div>
+        </div>
+        
+        <button id="resetButton">Reset Game</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
